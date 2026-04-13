@@ -1,3 +1,5 @@
+**Live API:** https://mean-reversion-ml.onrender.com/docs
+
 # Mean Reversion ML Pipeline
 
 An end-to-end ML pipeline for detecting mean reversion opportunities in large-cap equities. Pulls real price data, engineers technical indicators, trains a classifier, backtests the strategy against the S&P 500, and serves predictions via a REST API.
