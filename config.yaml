@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────
+#  Mean Reversion ML Pipeline — Configuration
+# ─────────────────────────────────────────────
+
+data:
+  tickers:           # Stocks used for training
+    - AAPL
+    - MSFT
+    - GOOGL
+    - AMZN
+    - META
+    - JPM
+    - TSLA
+  period: "5y"       # How far back to pull data
+  interval: "1d"     # Daily bars
+
+features:
+  bb_window: 20      # Bollinger Band rolling window (days)
+  bb_std: 2          # Bollinger Band standard deviation multiplier
+  rsi_window: 14     # RSI period
+  vol_window: 10     # Rolling volatility window
+  zscore_window: 20  # Z-score lookback window
+
+labels:
+  reversion_days: 5  # Days ahead to check for mean reversion
+  reversion_threshold: 0.02  # 2% move back toward mean = "reverted"
+
+model:
+  n_estimators: 200
+  max_depth: 6
+  random_state: 42
+  test_size: 0.2
+
+paths:
+  raw_data: "data/raw.parquet"
+  model:    "models/mean_reversion_model.joblib"
+  scaler:   "models/scaler.joblib"
